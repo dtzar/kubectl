@@ -20,11 +20,11 @@ RUN apk add --update ca-certificates \
     && apk add bash \
     && curl -L https://storage.googleapis.com/kubernetes-release/release/${KUBE_LATEST_VERSION}/bin/linux/amd64/kubectl -o /usr/local/bin/kubectl \
     && chmod +x /usr/local/bin/kubectl \
+    # Create non-root user (with a randomly chosen UID/GUI).
+    && adduser kubeadm -Du 2342 -h /config \
     # Cleanup uncessary files
     && apk del --purge deps \
-    && rm /var/cache/apk/* \
-    # Create non-root user (with a randomly chosen UID/GUI).
-    && adduser kubeadm -Du 2342 -h /config && \
+    && rm /var/cache/apk/*
 
 USER kubeadm
 
