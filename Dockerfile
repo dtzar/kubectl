@@ -20,12 +20,13 @@ RUN apk add --update ca-certificates \
     && apk add bash \
     && curl -L https://storage.googleapis.com/kubernetes-release/release/${KUBE_LATEST_VERSION}/bin/linux/amd64/kubectl -o /usr/local/bin/kubectl \
     && chmod +x /usr/local/bin/kubectl \
-    # Create non-root user (with a randomly chosen UID/GUI).
-    && adduser kubeadm -Du 2342 -h /config \
+    && curl -L https://raw.githubusercontent.com/kubernetes/helm/master/scripts/get -o | bash \
+    && curl -sSL http://deis.io/deis-cli/install-v2.sh | bash \
+    && mv $PWD/deis /usr/local/bin/deis \
     # Cleanup uncessary files
     && apk del --purge deps \
     && rm /var/cache/apk/*
 
-USER kubeadm
+WORKDIR /config
 
 CMD bash
