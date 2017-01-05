@@ -22,4 +22,5 @@ If you desire only kubectl installed and this as the entry command, I recommend 
 
 ## Run
 
-`docker run -it -v ~/.kube:/config/.kube dtzar/kubectl`
+The -v maps your host docker machine Kubernetes configuration directory (~/.kube) to the container's Kubernetes configuration directory (root/.kube).d
+`docker run -it -v ~/.kube:/root/.kube dtzar/kubectl`
