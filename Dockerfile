@@ -16,15 +16,15 @@ LABEL org.label-schema.vcs-ref=$VCS_REF \
 ENV KUBE_LATEST_VERSION="v1.5.1"
 # Note: Latest version of helm may be found at:
 # https://github.com/kubernetes/helm/releases
-ENV HELM_VERSION v2.1.3
-ENV FILENAME helm-${HELM_VERSION}-linux-amd64.tar.gz
+ENV HELM_VERSION="v2.1.3"
+ENV FILENAME="helm-${HELM_VERSION}-linux-amd64.tar.gz"
 
 RUN apk add --update ca-certificates \
     && apk add --update -t deps curl \
     && apk add bash \
     && curl -L https://storage.googleapis.com/kubernetes-release/release/${KUBE_LATEST_VERSION}/bin/linux/amd64/kubectl -o /usr/local/bin/kubectl \
     && chmod +x /usr/local/bin/kubectl \
-    && curl -L http://storage.googleapis.com/kubernetes-helm/${FILENAME} -o ${FILENAME} \
+    && curl -L http://storage.googleapis.com/kubernetes-helm/${FILENAME} -o /tmp/${FILENAME} \
     && tar -zxvf /tmp/${FILENAME} -C /tmp \
     && mv /tmp/linux-amd64/helm /bin/helm \
     && curl -sSL http://deis.io/deis-cli/install-v2.sh | bash \
