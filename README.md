@@ -5,6 +5,7 @@
 
 # Supported tags and respective `Dockerfile` links
 
+* `1.5.3`    [(1.5.3/Dockerfile)](https://github.com/dtzar/kubectl/blob/1.5.3/Dockerfile) - kubectl v1.5.3, deis v2.11.0, helm v2.2.1
 * `1.5.2`    [(1.5.2/Dockerfile)](https://github.com/dtzar/kubectl/blob/1.5.2/Dockerfile) - kubectl v1.5.2, deis v2.10.0, helm v2.1.3
 * `1.5.1`    [(1.5.1/Dockerfile)](https://github.com/dtzar/kubectl/blob/1.5.1/Dockerfile) - kubectl v1.5.1, deis v2.9.1, helm v2.1.3
 
